@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Used SVG Animation</title>
+</head>
+<body>
+
+	<section>
+		<!-- 속성 설정에서 경고가 생기는 것은 보통은 이 내용을 SVG File에 작성하고
+		이 File을 img Tag로 불러오는 것을 권장하기 때문입니다. -->
+		<svg width = "700" height = "700">
+			<rect width = "300" height = "100" style = "fill:rgb(0,0,255); stroke-width:1px;stroke:rgb(0,0,0)">"
+				<animate attributeName = "stroke-width" values="1px;30px;1px" dur = "2s" repeatCount="indefinite" />
+				<animate attributeName = "stroke" values="rgb(0, 0, 0);rgb(0, 255, 0);rgb(0, 0, 0)" dur = "2s" repeatCount="indefinite" />
+			</rect>
+		</svg>
+	</section>
+</body>
+</html>

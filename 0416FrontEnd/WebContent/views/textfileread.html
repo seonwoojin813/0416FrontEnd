@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Text File Read</title>
+</head>
+<body>
+	<h1 align="center">HTML5 File API</h1>
+	<input type="file" id="file" />
+	<select id="encoding">
+		<option value="UTF-8">UTF-8</option>
+		<option value="EUC-KR">EUC-KR</option>
+	</select>
+	<button onclick="readFile()">Read</button>
+	<br />
+	<span id="fileName">File Name : </span>
+	<span id="fileSize">File Size : </span>
+	<textarea id="content" readonly="readonly"
+	rows="30" cols="50"></textarea>
+</body>
+
+<script>
+	function readFile(){
+		var file = document.getElementById("file").files[0]
+		document.getElementById("fileName").innerHTML += file.name
+		document.getElementById("fileSize").innerHTML += (file.size/1024) + "KB"
+		//파일 읽기
+		var encoding = document.getElementById("encoding")
+		var enctype = encoding.options[encoding.selectedIndex].value
+		
+		var reader = new FileReader()
+		reader.readAsText(file, encoding)
+		
+		//파일의 내용을 전부 읽으면 출력
+		//FileReader는 비동기적으로 동작하기 때문에 콜백 함수로 작업을 처리
+		//Image 도 마찬가지
+		//async (비동기) - 다른 작업이 수행중이지 않을 때 작업을 처리
+		reader.addEventListener("load", function(e){
+			document.getElementById("content").value = reader.result
+		})
+	}
+</script>
+
+</html>
