@@ -1,0 +1,113 @@
+<!-- 0417 -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Web SQL</title>
+</head>
+<body>
+    <fieldset>
+    
+           <legend>입력영역</legend>
+           
+           </fieldset>
+              <label for="name">이름</label><input type="text" id="name" />
+              <label for="age">나이</label><input type="text" id="age" />
+              <label for="address">주소</label><input type="text" id="address" size="20" />      
+               <button id="insertbtn">삽입</button>     
+           <fieldset>
+           
+           <legend>출력영역</legend>
+           <select id="list" size="10"></select>
+           <button id="removebtn">삭제</button>
+    </fieldset>
+    
+    <script>
+    
+    window.addEventListener("load", function(e){
+    	name1 = document.getElementById("name")
+    	age = document.getElementById("age")
+    	address = document.getElementById("address")
+    	list = document.getElementById("list")
+    	
+    	insertbtn = document.getElementById("insertbtn")
+    	insertbtn.addEventListener("click", insertData)
+    	
+    	removebtn = document.getElementById("removebtn")
+        removebtn.addEventListener("click", removeData)
+        
+        //데이터베이스에 테이블을 생성
+        db = window.openDatabase('AddressBook', '1', 'AddressBookDB', 1024*1024)
+        db.transaction(function(tx){
+        	tx.executeSql('create table if not exists AddressBook(' + 'num integer primary key autoincrement,' + 'name, age integer, address)')
+        })
+        //데이터를 가져와서 출력하는 함수를 호출
+        showList()
+        
+    })
+    
+    //addressbook 테이블에서 전체 데이터를 읽어와서 list에 출력하는 함수
+    //동일한 작업을 여러곳에서 수행하기 때문에 함수를 생성
+    function showList(){
+    	db.transaction(function(tx){
+    		tx.executeSql('select * from addressbook', [] , function(tx, rs){
+    			//list를 비우기
+    			list.innerHTML = ''
+    			//데이터를 전부 가져오기
+    			var rows = rs.rows
+    			for(var i=0; i<rows.length; i=i+1){
+    				//읽어온 한 개의 행 가져오기
+    				var row = rows.item(i)
+    				//list에 Option 추가
+    				var option = new Option(row.num +'\t'+ row.name + '\t' + row.age + '\t' + row.address, row.num)
+    				list.options[list.options.length] = option
+    			}
+    		});
+    	});
+    };
+    //데이터 삽입을 처리하는 함수
+    function insertData(e){
+    	//console.log("삽입버튼 클릭") -->테스트
+    db.transaction(function(tx){
+    	tx.executeSql(
+    	'insert into addressbook(name, age, address) values(?,?,?)', [name1.value, age.value, address.value]	 , function(tx, tr){
+    	showList()
+    	name1.value = ''
+    	age.value= ''
+    	address.value= ''
+    	
+    	
+    })
+    })	
+    };
+    //데이터를 삭제하는 함수 - list에서 선택한 데이터를 삭제
+    function removeData(e){
+    	//console.log("삭제버튼 클릭") -->테스트
+    	
+    	//프로그래밍 언어에서는 어떤 인덱스를 찾아오는 함수나 메소드의 경우
+    	//조건에 맞지 않으면 음수를 리턴 - 대부분은 -1
+    	
+    	//선택한 행번호 찾아오기
+    var selectedIndex = list.selectedIndex
+    if(selectedIndex < 0){
+    	alert("선택된 데이터가 없습니다.")
+    	return
+    }
+    
+    	//선택한 행의 value 찾아오기
+    	var selectedNum = list.options[selectedIndex].value
+    	
+    	//삭제는 기본키를 조건으로 해서 삭제하는 경우가 많습니다.
+    	db.transaction(function(tx){
+    	tx.executeSql('delete from addressbook where num = ?', [selectedNum], function(tx, rs){
+    		showList()
+    	})
+    	})	
+    	
+    	
+    };    
+    </script>
+    
+    
+</body>
+</html>

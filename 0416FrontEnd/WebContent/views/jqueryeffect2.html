@@ -1,0 +1,27 @@
+<!-- 0418 -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jquery 사용자 지정 효과</title>
+<script src= "../js/jquery.min.js"></script>
+<script>
+       $(function(){
+    	  $('#n1').animate({marginLeft:"250px"}, 5000)
+    	  $('#n2').animate({marginLeft:"250px", opacity:0.2}, 5000)	  
+    	  $('#n3').animate({marginLeft:"250px", opacity:0.2}, 5000, function(){
+    		  $('#n3').css('color', 'red')
+    	  })
+       })
+      
+</script>
+</head>
+
+<body>
+
+	<h1 id="n1">효과</h1>
+	<h1 id="n2">효과</h1>
+	<h1 id="n3">효과</h1>
+
+</body>
+</html>

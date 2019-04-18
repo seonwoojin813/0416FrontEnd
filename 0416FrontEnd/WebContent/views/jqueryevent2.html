@@ -1,0 +1,52 @@
+<!-- 0418 -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jquery 이벤트 처리 - 2</title>
+<script src= "../js/jquery.min.js"></script>
+<script>
+$(function(){
+	   $('#ta').on('keydown', function(e){
+		   //이벤트 객체를 이용해서 누른 키 값을 출력
+		   alert(e.which)
+		   //event 변수는 선언하지 않았지만 jquery가 제공
+		   alert(event.which)
+	   })
+	   
+	   $('#kakao').on('click', function(e){
+		   alert("카카오 이동")
+		   //기본적으로 하는 이벤트 처리를 하지 않도록 설정
+		   //프레임 워크를 사용하다 보면 프레임워크가 미리 할당해 놓은 기능들이 있습니다.
+		   //이런 기능을 제거하는 방법을 사용해야 할 때가 있습니다.
+		   e.preventDefault()
+	   })
+	   
+	   //이벤트 버블링: 외부와 내부에 동일한 동작을 처리하는 코드가 있을 떄
+	   //내부에 동작이 발생하면 외부의 동작도 수행하는 것
+	   //자바스크립트는 이벤트 버블링이 발생
+	   //안드로이드나 iOS는 이벤트 버블링이 발생하지 않습니다.
+	   $('#outer').on('click', function(e){
+		   alert("외부 이벤트")
+	   })
+	   $('#inner').on('click', function(e){
+		   alert("내부 이벤트")
+		   //이벤트 버블링 막기
+		   e.stopPropagation()
+	   })
+	   
+    })
+
+</script>
+
+</head>
+<body>
+<textarea cols='30' rows="4" id='ta'></textarea>
+ <a href="https://www.kakao.com" id="kakao">카카오</a>
+
+<div id="outer">
+<p id="inner">이벤트 버블링</p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!-- 0418 -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>문서 객체 조작</title>
+<style>
+
+
+</style>
+
+<script src="../js/jquery.min.js"></script>
+
+<script>
+    $(function(){
+           //input 이나 select에서 선택된 데이터 또는 입력된 값 가져오기
+           alert($('language').val())
+           //input이나 select에 값 설정
+           $('#db').val('MySQL')
+           
+           //html(태그 적용) 과 text(태그 적용 안됨)를 이용해서 값을 설정
+           $('#frontend').html('HTML<br/>CSS<br/>JavaScript')
+           $('#backend').text('Java<br/>DB<br/>Framework<br/>WAS')
+           
+           //태그 안의 내용 가져오가
+           alert($('#was').html())
+           //태그안의 내용울 삭제
+           $('#structure').empty() //$('#structure').html('')
+           
+           //태그 자체를 삭제
+           //$('#structure').remove()
+    })
+   
+    
+</script>
+
+</head>
+<body>
+    <select id="language">
+     <option value="JavaScript">JavaScript</option>
+     <option Selected="selected" value="Java">Java</option>
+    <option value="Swift">Swift</option>
+    </select>
+
+    <input type="text" id="db" /><br />
+    <p id="frontend"></p>
+    <p id="backend"></p> 
+    <p id="was">tomcat</p>
+    <p id="structure">웹 브라우저 -> 웹 서버 - > 어플리케이션 서버 -> 저장소</p>
+
+
+</body>
+</html>

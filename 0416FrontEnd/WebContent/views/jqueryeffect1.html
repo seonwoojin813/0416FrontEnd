@@ -1,0 +1,29 @@
+<!-- 0418 -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jquery 화면전환 효과</title>
+<script src= "../js/jquery.min.js"></script>
+<script>
+       $(function(){
+    	  $('#btn').on('click', function(){
+    		  //$('#img').fadeToggle('slow') -->천천히 이미지 수행
+    		  $('#img').fadeToggle(3000, function(){
+    			  console.log("콜백으로 지정해야 종료된 후 실행")
+    		  })  
+    		  //하나의 함수 안에서 화면을 변경하는 코드와 다른 코드가 같이 있으면
+    		  //비동기 적으로 수행됩니다.
+    		  console.log("애니메이션 수행?")
+    		  
+    	  })
+       })
+
+</script>
+</head>
+<body>
+<input type="button" id="btn" value="화면전환" /><br />
+<img id="img" src="../resources/버즈.jpg" />
+        
+</body>
+</html>

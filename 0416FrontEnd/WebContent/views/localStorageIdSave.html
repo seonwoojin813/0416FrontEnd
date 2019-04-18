@@ -1,0 +1,44 @@
+<!-- 0417 -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>localStorageIdSave</title>
+</head>
+<body>
+<form action = "login" id= "loginform">
+<label for="">ID</label><input type="text" id=id /><br />
+<input type="checkbox" id="idsave" />IDSAVE<br />
+<input type="submit" value="login" />
+</form>
+     
+     <script>
+     window.addEventListener("load", function(e){
+    	 var ids = document.getElementById("id")
+    	 idsave = document.getElementById("idsave")
+    	 loginform = document.getElementById("loginform")
+    	 
+    	 //로컬 스토리지에 ids가 저장되어 있으면 불러오기
+    	 if(typeof localStorage.ids != 'undefined'){
+    		 ids.value = localStorage.ids
+    		 idsave.chexked = true
+    	 }
+    	 
+    	 
+    	 //폼의 데이터 전송이 이루어질 떄의 이벤트 처리는 
+    	 //폼의 submit 또는 submit 버튼의 click 이벤트로 처리
+    	 loginform.addEventListener("submit", function(e){
+    		//체크박스에 체크가 되어있으면 ids의 값을 로컬 스토리지에 저장
+    		if(idsave.checked == true){
+    			localStorage.id = ids.value
+    		}else{
+    			localStorage.clear()
+    		}
+    	 })
+     })
+     
+     
+     </script>
+
+</body>
+</html>

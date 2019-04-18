@@ -1,0 +1,49 @@
+<!-- 0418 -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>기본 선택자</title>
+
+<!--  jquery 링크 설정 -->
+
+<script src="../js/jquery.min.js"></script>
+<script>
+
+$(function(){
+	//p태그에 색상을 빨강으로 설정
+	$('p').css('color', 'red')
+	//paragraph라는 클래스를 가진 태그에 색상을 파랑으로 설정
+	$('.paragraph').css('color', 'blue')
+	//pid 라는 아이디를 가진 태그에 색상을 녹색으로 설정
+	$('#pid').css('color', 'green')
+	
+	//짝수 행과 홀수행에 서로 다른 배경색을 지정 - alternative
+	$('li:odd').css('background-color', 'yellow')
+    $('li:even').css('background-color', 'gray')
+})
+    
+
+</script>
+</head>
+<body>
+
+    <p>태그 선택자</p>
+    <p>태그 선택자</p>
+    <p class="paragraph">클래스 선택자</p>
+    <p id="pid">아이디 선택자</p>
+     
+     
+     <ul>
+     <li>프로그래밍 언어</li>
+     <li>자료구조</li>
+     <li>알고리즘</li>
+     <li>디자인패턴</li>
+     <li>소프트웨어 공학</li>
+     <li>데이터베이스</li>
+
+     </ul>
+
+
+</body>
+</html>

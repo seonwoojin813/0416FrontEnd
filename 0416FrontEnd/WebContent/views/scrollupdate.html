@@ -1,0 +1,43 @@
+<!-- 0418 -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>스크롤해서 데이터 출력하기</title>
+<script src= "../js/jquery.min.js"></script>
+<script>
+       $(function(){
+    	   //body 태그 뒤에 h2 태그 20개 만들기
+    	   for(var i=0; i<40; i=i+1){
+    		   $('<h2>스크롤해서 업데이트 하기</h2>').appendTo('body')
+    	   }
+    	   
+    	   //스크롤 이벤트 처리
+    	   $(window).scroll(function(){
+    		   //스크롤한 위치 가져오기
+    	   var scrollHeight = 
+    		   $(window).scrollTop() + $(window).height()
+    		   //문서의 높이 가져오기
+    		   var documentHeight = $(document).height()
+    		   //위 2개의 높이가 같으면 -가장 아래에서 스크롤 했다면
+    		   if(scrollHeight == documentHeight){
+     //if(scrollHeight - documentHeight < 2 && scrollHeight - documentHeight	> -2   {
+    //이렇게 할 수도 있어	 
+    			   //실제 프로그래밍이면 실제 데이터 N개를 가져와서 출력
+    			   //촤근에는 페이징 퍼리를 하지 않고 이렇게 출력하는 것도 많이 사용
+    			   //데표적인 처리가 댓글 볼 떄 또는 유튜브
+    			
+    			 for(var i=0; i<20; i=i+1){
+    				 $('<h3>업데이트 된 데이터</h3>').appendTo('body')
+    			 }
+    		   }  
+    	   })    	   
+       })
+
+</script>
+
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!-- 0417 -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Web Worker 사용 - 자바스크립트의 스레드</title>
+</head>
+<body>
+    <input type="text" id="su" /><button id="calbtn">계산</button>
+    
+</body>
+   <script>
+   var su = document.getElementById("su")
+   var salbtn = document.getElementById("calbtn")
+   
+   calbtn.addEventListener("click", function(e){
+	   /*
+	   var k = parseInt(su.value)
+	   var sum = 0
+	   for(var i=1; i<=k; i=i+1){
+		   sum = sum = i
+	   }
+	   alert(sum)
+   })
+   */
+   //워커 객체 생성
+   worker = new Worker('worker.js')
+   //워커를 스레드로 실행
+   worker.postMessage(su.value)
+   //결과 가져오기
+   worker.onmessage = function(e){
+	   //worker가 작업하고 넘겨준 데이터를 출력
+	   alert(e.data)
+   }
+   })
+   
+   </script>
+
+
+</html>

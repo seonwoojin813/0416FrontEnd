@@ -1,0 +1,29 @@
+<!-- 0418 -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jquery 이벤트 처리 - 1</title>
+<script src= "../js/jquery.min.js"></script>
+<script>
+$(function(){
+	$('input').click(function(event){
+		alert("버튼 클릭")
+	})
+	
+	$('h1').hover(function(event){
+		$('h1').css('background-color','yellow')
+	}, function(event){
+		$('h1').css('background-color','blue')
+
+	})
+    })
+
+</script>
+</head>
+<body>
+<input type="button" value="버튼" />
+   <h1>Hover 이벤트</h1>
+
+</body>
+</html>

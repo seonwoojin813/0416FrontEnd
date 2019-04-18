@@ -1,0 +1,98 @@
+<!-- 0417 -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>sessionStorage</title>
+</head>
+<body>
+     <fieldest>
+     <legend>sessionStorage 이용</legend>
+     <!-- lablel의 for 속성에 다른 입력 객체의 id를 설정하면 레이블을 선택했을 때도 for 속성의 객체가 선택된 것과 동일한 효과 -->
+     
+     <label for="key">KEY</label>
+     <input type="text" id="key" />
+     
+     <label for="value">VALUE</label>
+     <input type="text" id="value" />
+     
+     <button id="insertbtn">삽입</button>
+     <button id="removebtn">삭제</button>
+     <button id="newwindowbtn">윈도우 복제</button> 
+
+     </fieldest>
+     
+     <fieldset>
+     <legend>출력 영역</legend>
+     <select id="list"></select>
+     <button id="reloadbtn">재출력</button>
+     </fieldset>
+  
+     <script>
+     //sessionStorage의 모든 내용을 읽어서 select에 출력하는 함수
+     function showList(){
+    	 //태그 안의 내용을 전부 비우기
+    	 list.innerHTML = ""
+    	 //sessionStorage를 순회
+    	 for(var i=0; i<sessionStorage.length; i=i+1){
+    		 //sessionStorage의 모든 키 값을 t에 저장
+             var t = sessionStorage.key(i)
+             //list에 마지막에 추가
+             //화면에 보여지는 내용은 키와 값이고 value는 t로 옵션을 추가
+             list.options[list.options.length] = 
+            	 new Option(t + ":" + sessionStorage[t], t)
+    	 }
+     }
+     
+     //문서를 전부 읽고 메모리에 로드하고 나면 호출되는 콜백함수 만들기
+     window.addEventListener("load", function(e){
+    	 showList();
+    	 
+    	 var k = document.getElementById("key")
+    	 var v = document.getElementById("value")
+    	 //변수를 만들 때 var를 안 붙이면 전역변수
+    	 list = document.getElementById("list")
+    	 
+    	 var insertBtn = document.getElementById("insertbtn");
+    	 var removeBtn = document.getElementById("removebtn");
+    	 var newWindowBtn = document.getElementById("newwindowbtn")
+    	 var reloadBtn = document.getElementById("reloadbtn")
+    	 
+    	 //insertbtn을 눌렀을 때 key 와 value에 입력된 값을 
+    	 //세션 스토리지에 저장하기
+    	 insertBtn.addEventListener("click", function(e){
+    		 //세션 스토리지에 저장
+    		 //sessionStorage[k.value] = v.value
+    		 localStorage[k.value] = v.value
+    		 //데이터를 다시 출력
+    		 showList()
+    	 })
+    	 
+    	 //newWindowBtn 버튼을 클릭했을 때 현재와 동일한 모양을 갖는 윈도우를 생성
+    	 newWindowBtn.addEventListener("click", function(e){
+    		 window.open(location.href)
+    	 })
+    	 
+    	 //list의 선택이 변경되었을 떄 그 내용울 key와 value에 출력
+    	 list.addEventListener("change", function(){
+    		 selectData = list.options[list.selectedIndex]
+    		 k.value = selectData.value
+    		 v.value = sessionStorage[selectData.value]
+    	 })
+    	 
+    	 //removeBtn 버튼을 클릭했을 때 현재 선택된 데이터를 삭제
+    	 removeBtn.addEventListener("click", function(e){
+    		 delete sessionStorage[k.value]
+    		 k.value=""
+    		 v.value=""
+    		 showList()
+    	 })
+    	 
+    	 
+     })
+     
+     </script>
+       
+  
+</body>
+</html>
