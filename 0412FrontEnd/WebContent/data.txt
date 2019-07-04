@@ -1,0 +1,2 @@
+객체지향언어:Java, C#, C++
+스크립트언어:JavaScript,Kotlin,Swift

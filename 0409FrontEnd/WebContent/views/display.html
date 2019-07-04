@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+ /*soccer 태그를 테이블로 변환*/
+ soccer{display:table;
+ border-collapse:collapse;}
+ 
+ /*team을 행으로 변환*/
+ team{display:table-row-group;}
+ 
+ /*name과 player는 cell로 변환 */
+ name, player{display:table-cell;
+ border: 2px double black;
+ padding:10px;}
+ 
+ 
+</style>
+</head>
+<body>
+<!-- xml 형식의 데이터 -->
+<soccer>
+    <team>
+        <name>Juventus</name>
+        <player>Ronaldo</player>
+        </team>
+    <team>
+        <name>Liverpool</name>
+        <player>Salah</player>
+     </team>
+        <team>
+        <name>Tottenham</name>
+        <player>Kane</player>
+        </team>
+        <team>
+        <name>Barcelona</name>
+        <player>Messi</player>
+        </team>    
+</body>
+</html>

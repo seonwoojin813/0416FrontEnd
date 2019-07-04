@@ -1,0 +1,35 @@
+.font{
+	font-weight:bold;
+	font-style:italic; 
+	background-color:yellow;
+    text-align:center;
+}
+
+.inline{
+	background-color:aqua;
+	text-align:center;
+}
+
+
+.super{
+	vertical-align:super;
+	font-size:0.5em;
+	
+}
+
+.sub{
+	vertical-align:sub;
+	font-size:0.5em;
+}
+
+.img{
+	/* top을 설정하면 다른 콘텐츠가 위에 표시
+	middle을 설정하면 중간
+	bottom을 설정하면 하단에 표시*/
+	vertical-align:top;
+}
+
+.shadow{
+	font-size:60px; 
+	text-shadow:2px 5px red;
+}

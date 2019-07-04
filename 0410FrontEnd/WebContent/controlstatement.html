@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>제어문</title>
+</head>
+<body>
+
+</body>
+<script>
+var answer = prompt("점수를 입력하세요")
+//answer의 값이 60이상이면 합격 아니면 불합격이라고 출력
+//출력은 콘솔을 이용
+   
+ if(answer >= 60){
+	 console.log("합격")
+ }else{
+	 console.log("불합격")
+ }
+ 
+ 
+ //80이상이면 우수 60이상이면 보통 그 이외는 노력
+ switch(true){
+  case answer >= 80:
+	console.log("우수")
+   break
+  case answer >= 60:
+	 console.log("보통")
+   break
+  default:
+	  console.log("노력")
+	  break;
+ }
+ //body에 img태그 3개를 추가해서 이미지를 출력
+ //모바일 웹을 만들어주는 프레임워크 중의 하나인 Sencha Touch에서는 
+ //body의 내용을 츌력할 때 스크립트에서 전부 작업하는 것을 권장
+ for(var i=1; i<=3; i=i+1){
+	 document.writeln("<img src='images/image" + i + ".jpg' width=250 height=250 />")
+ }
+ 
+  var ar = ["Ironman","Spiderman","Blackpanther"]
+  
+  //ar의 2번요소 제거
+  delete ar[2]
+  //ar 배열의 인덱스를 순서대로 imsi에 대입
+  for(var imsi in ar){
+	  console.log(ar[imsi])
+  }
+ 
+  //객체를 생성
+  var map = {"name":"sun","num":1}
+  delete map["name"]
+  //객체를 for-each로 순회
+  //속성이 순서대로 attr에 대입
+  for(var attr in map){
+	  console.log(attr + ":" +  map[attr])
+  }
+ 
+</script>
+
+</html>

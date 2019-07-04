@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>키 프레임 애니메이션</title>
+<style>
+@-webkit-keyframes keyany{
+from{
+left:0px;
+-webkit-transform:rotate(0deg);
+} to{
+left:500px;
+-webkit-transform:rotate(3600deg);
+    }
+}
+
+#key{
+position:absolute; /*위치는 마음대로 설정가능*/
+width:150px;
+height:150px;
+-webkit-animation-name:keyany;
+-webkit-animation-duration:3.0s;
+-webkit-animation-iteration-count:infinite;
+}
+
+</style>
+
+
+</head>
+<body>
+      <div id="key">
+      <img src="../images/2006.jpeg" width="200" height="200"/>
+      </div>
+</body>
+</html>

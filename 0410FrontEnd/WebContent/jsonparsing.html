@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JSON Parsing</title>
+</head>
+<body>
+      <!--  <input type="button" id="popup" value="팝업" />-->
+       <p id="popup">카카오</p>
+</body>
+
+<script>
+//접속한 운영체제와 브라우저 버전 확인
+//console.log(navigator.userAgent)
+alert(navigator.userAgent)
+
+      document.getElementById("popup").addEventListener(
+    	  'click', function(e){
+    		location.href = "https://www.kakao.com"
+    		  
+    		  /*
+    		  //예전에는 아이디 중복체크나 광고를 팝업으로 많이 출력
+    		  //아이디 중복체크는 ajax로 데체하고 광고는 레이어 팝업으로 대체하는 경향
+          window.open('http://www.naver.com', 'naver', 'width=600, height=300')	  
+    */	  })
+      
+  
+    //JSON 문자열은 특별한 경우가 아니면 직접 생성하지 않습니다.
+    var x = "[76, 87, 77, 89]"
+    //위 문자열을 자바스크립트 객체로 변환
+    var ar = JSON.parse(x)
+    for(var idx in ar){  	
+    		console.log(ar[idx])
+    }
+  
+     var cnt = 1
+     //1초 마다 동작하는 타이머
+    var timer = setInterval(function(){
+    console.log(cnt)
+    cnt = cnt + 1	
+    }, 1000)
+    
+    //10초 후에 한 번만 동작하는 타이머 
+    setTimeout(function(){
+    	clearInterval(timer)
+    },10000)   
+     
+</script>
+
+</html>

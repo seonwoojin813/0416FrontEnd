@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>메인 페이지</title>
+<style>
+
+</style>
+
+</head>
+<body>
+
+</body>
+<script>
+     //모바일 운영체제 이름의 배열 생성 - 영문은 조회할 때 대소문자 구분여부 판단
+     //대부분의 경우는 대소문자를 구분하지 않기 때문에 모두 대문자나 모두 소문자로 만들고 사용하는것이 좋습니다.
+     
+     var mobileOS = ["iphone", "ipod", "android"]
+     //var mobileOS = ["iphone", "ipod", "android"] 
+     
+     //접속한 운영체제 버전과 브라우저 종류를 가져오기 - 소문자로 변경
+     var os = navigator.userAgent.toLowerCase() //.toLowerCase()여기는 네비게이터라서 아니고
+ 
+     var isMobile = false
+     //배열을 순회
+     for(var idx in mobileOS){
+    	 //indexOf는 데이터를 찾으면 그 위치를 못찾으면 -1을 리턴
+    	 //os에 mobileOS의 이름이 있다면
+    	 //if(os.indexOf(mobileOS[idx].toLowerCase()) >= 0){  --> 이렇게 여기다 써야해서 
+    	 if(os.indexOf(mobileOS[idx]) >= 0){
+    		 isMobile = true
+    		 break
+    	 }
+     }
+    //모바일에서 접속하면 네이버 PC에서 접속하면 카카오로 이동
+    if(isMobile == true){
+    	location.href = "http://www.naver.com"
+    }else{
+    	location.href = "http://www.daum.net"
+    }
+
+</script>
+
+
+
+
+
+
+</html>

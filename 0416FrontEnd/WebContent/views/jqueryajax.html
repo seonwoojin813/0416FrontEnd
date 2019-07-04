@@ -1,0 +1,42 @@
+<!-- 0419 -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jquery를 이용한 ajax 요청 처리</title>
+<script src="../js/jquery.min.js"></script>
+<script>
+$(function(){
+	$('#ajax').on('click', function(){
+		$.ajax({
+			//url:'../resources/data.txt',
+			url:'../resources/data.xml',
+			success:function(data){
+			//XML 데이터의 경우는 find 함수를 이용해서
+			//원하는 태그의값을 직접 찾아야 합니다.
+		$(data).find('data').each(function(){
+			console.log($(this).find('CompanyLocation').text())
+		})
+				/*
+				//$('#disp').html(data
+               //json인 경우는 파싱된 결과 - 배열
+			for(var i=0; i<data.length; i=i+1){
+				var item = data[i]
+				alert(item.team)
+			}
+				*/
+			},
+			dataType:'xml'
+		})
+	})
+})
+
+
+</script>
+
+</head>
+<body>
+<button id="ajax">ajax 요청</button>
+<div id="disp"></div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!-- html에 대한 기본 설정 -->
+<!DOCTYPE html>
+
+<!-- 문서의 시작 -->
+<html>
+<!-- 파일의 옵션설정 -->
+<head>
+<!-- 문서의 인코딩 설정으로 없으면 한글은 디폴트로 설정되서 꺠지게 됩니다. -->
+<meta charset="UTF-8">
+<meta http-equiv="refresh" content="5 url=http://www.naver.com"  /> 
+<title>Insert title here</title>
+</head>
+<!-- 브라우저의 표시되는 영역 -->
+<body bgcolor="green" oncontextmenu="return false">
+<p>처음 만들어보는 HTML</p>
+<p>두번째 작성한 문장</p>
+</body>
+
+<script>
+//마우스 오른쪽 클릭 방지
+   document.oncontextmeny = function(e){
+	   alert("마우스 오른쪽은 사용할 수 없습니다.");
+	   return false;
+   }
+</script>
+</html>      

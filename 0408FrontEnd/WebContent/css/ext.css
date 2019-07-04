@@ -1,0 +1,32 @@
+/*태그 선택자*/
+div{
+	color:blue;
+}
+
+
+/*클래스 선택자*/
+.red{
+	color:red;
+}
+
+/* id선택자 */
+#paragraph{
+	color:silver;
+}
+
+#pseudo{
+	background-color:yellow;
+	color:green;
+}
+
+#pseudo:hover{
+	color:pink;
+}
+
+#pseudo:active{
+	color:gray;
+}
+
+input:focus{
+	background-color:papayawhip;
+}

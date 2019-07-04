@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>캔버스 - 출력 영역(Clipping) 설정</title>
+</head>
+<body>
+<!--  그래픽을 출력할 canvas 영역을 설정 -->
+ <canvas id="canvas" width="500" height="500"></canvas>
+
+</body>
+<script>
+  //canvas 찾아오기
+  var canvas = document.getElementById("canvas")
+  //캔버스에 그림을 그릴 객체를 가져오기
+  var context = canvas.getContext("2d")
+  
+  //그림자 설정
+  context.shadowColor = "rgba(0,0,0,0.5)"
+  context.shadowOffsetX = 7
+  context.shadowOffsetY = 7
+  context.shadowBlur = 10
+  
+  //폰트 설정
+  context.font = "bold 50px verdana, sans-serif"
+  //텍스트 출력
+  context.fillText("텍스트 출력", 50, 50)
+  /*
+  //출력 영역 만들기
+  context.beginPath()//메모리 상에서 선 그리기 시작
+  //중앙점의 좌표가 250,250이고 반지름이 250인 호를 0도 360도까지 그리기
+  //context.arc(250,250, 250, 0, 2*Math.PI, ture)
+  //stroke() 또는 fill()
+  
+  context.moveTo(250, 0)
+  context.lineTo(500, 500)
+  context.lineTo(0, 500)
+  context.lineTo(250, 0)
+ 
+
+  //위에 선이 그려진 영역에만 내용을 출력
+  context.clip()
+
+  //이미지 객체를 생성
+  var image = new Image()
+  image.src = "../resources/spaa.jpg"
+  
+  //image 객체가 파일을 전부 로드하면
+  image.addEventListener("load", function(e){
+	  context.drawImage(image, 0,0,500,500)
+  })
+  
+  */
+</script>
+</html>

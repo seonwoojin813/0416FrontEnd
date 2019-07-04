@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Dom 객체 찾아와서 사용하기</title>
+</head>
+<body>
+    <p id="paragraph" >단락 태그 - 문자열의 모임</p>
+    <div id="area">블록 영역 태그 - 이미지나 텍스트 등을 출력</div>
+    
+    <input type="text" id="name"/>
+    <textarea rows="10" cols="10" id="ta"></textarea>
+</body>
+
+<script>
+
+//paragraph라는 id를 가진 태그를 찾아오기
+var paragraph = document.getElementById("paragraph")
+//태그 안의 내용을 설정
+paragraph.innerHTML = "새로 입력한 내용"
+paragraph.style.color = "red"
+
+//area라 id를 가진 태그를 찾아오기
+var area = document.getElementById("area")
+area.innerHTML += "<img src='images/Thor.jpg' width='250' height='250'/>"
+
+var name1 = document.getElementById("name")
+name1.value = "선우진"
+var ta = document.getElementById("ta")
+ta.value = "입력태그는 value 속성으로 값을 가져오고 설정합니다."
+
+
+</script>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트 사용</title>
+<!-- 스크립트 내용 
+body 태그의 내용은 바로 인식하지 못하기 때문에 
+body 태그의 내용을 수정할 때는 이벤트 처리 함수 안에 작성해야 합니다.-->
+<script>
+
+</script>
+
+</head>
+<body>
+
+</body>
+
+<!-- 스크립트 내용 
+body의 내용을 읽고 수행하기 때문에 body 태그의 내용을 바로 수정할 수 있습니다.
+최근에는 하단에 적는 경우만 많습니다.-->
+<script>
+        //대화상자로 출력
+        //alert("대화상자로 텍스트 출력")
+      
+        //브라우저 화면에 츨력
+        /*
+        document.writeln("화면에 출력 </br> 다른 태그와 겹처서 출력되서 공부할 때만 사용")
+        */
+        
+        //콘솔에 출력
+        //console.log("디버거에 출력")
+        
+        //변수를 만들고 데이터를 대입한 후 출력
+        
+        //CDATA가 나오면 이 영역은 있는 그대로 해석하도록 합니다.
+        //xml이나 html에서 < >들은 태그로 인식하지 않도록 하기 위해서 입니다.
+        //<! [CDATA[
+        var x = 2000
+        console.log("x:" + x)
+        console.log("x의 자료형:" + typeof x) // typeof (x)이렇게 써도 됨
+        
+        //변수를 선언만 하고 데이터를 대입하지 않은 경우 undefined
+        //변수가 없는 것과 같습니다.
+        var y 
+        console.log("y:" + y)
+        
+        var z = null
+        console.log("z:" + z)
+        //]]>
+        
+        var ar = ["우디", "버즈", "제시", 27]
+        //배열의 내용을 확인
+        console.log(ar)
+        console.log(ar.valueOf())
+        console.log(ar.join("/"))
+        
+        console.log("100" * "50") //문자열 이므로 * 연산이 안되어야 하지만
+        //연산자를 보고 자료형을 유추해서 숫자로 변환한 후 연산을 수행해야 합니다. 
+        
+        console.log("결과:" + Number("100") + 200)
+        console.log("결과:" + (Number("100") + 200))
+        
+        
+        
+        
+</script>
+
+</html>

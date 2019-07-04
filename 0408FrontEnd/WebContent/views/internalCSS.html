@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>html 파일 내부에 스타일 시트를 설정하기</title>
+<!-- 내부에 만들어서 사용하는 스타일시트  -->
+<style>
+p{
+
+color:red;
+
+}
+/* group이라는 class가진 p태그는 아래 내용을 적용*/
+.group{
+color:blue;
+}
+/*second라는 id를 가진 태그는 아래 내용을 적용*/
+#second{
+    color:magenta;
+}
+
+</style>
+
+</head>
+<body>
+<!--  태그 안에 style 속성을 이용해서 스타일을 적용하는 것을 inline syylesheet
+라고 하데 비추천: 유지보수할 때 다른 태그들을 건드리지 않고 적용할 수 있어서 사용하던 방식 -->
+    <p style="color:black">안녕하세요</p>
+    <p id="second">안녕하세요</p>
+    <p class="group">안녕하세요</p>
+    <p id="group">안녕하세요</p>
+    <p>안녕하세요</p>
+
+</body>
+</html>

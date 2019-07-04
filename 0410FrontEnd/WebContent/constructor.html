@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>생성자를 이용한 객체 생성</title>
+</head>
+<body>
+
+</body>
+<script>
+      /*
+      //생성자와 일반 함수의 차이ㅈㅁ은 this를 사용한다는 점입니다.
+      var Person = function(name, age){
+    	  this.name = name
+    	  this.age = age
+      }
+      //객체 생성
+      var p1 = new Person("Pogba", 27)
+      
+      console.log(p1)
+      
+      Object.prototype.display = function(){
+    	  console.log("모든 객체에게 상속됩니다.")
+      }
+     
+      //p1에는 원래 display가 없었지만 Object에 dispiay가 추가되서
+      //p1에도 추가가 됩니다.
+     p1.display()
+     
+     //문자열의 모든 공백을 제거하고 출력
+     var str = "  Hello World  "
+     var result = ""
+     for(var i=0; i<str.length; i=i+1){
+    	 var ch = str.charAt(i)
+    	if(ch != " "){
+    		result = result + ch
+     }
+      } 
+      console.log(result)
+     */
+     
+     
+     var ar1 = [19, 10, 14, 9]
+     var ar2 = ["메시", "호나우지뉴", "앙리", "에투"]
+     var ar3 = [new Date(1994, 8, 13), new Date(1993, 3, 27)]
+     
+      //자바스크립트에서 숫자도 문자열 형태로 비교해서 정렬 - radix sort
+      //첫번째 자리부터 데이터를 하나씩 꺼내서 비교한 후 정렬
+     console.log(ar1.sort())
+     console.log(ar2.sort())
+     console.log(ar3.sort())
+     //원하는 형태로 정렬을 하고자 하면
+     //매개변수가 2개이고 정수를 리턴하는 함수를 매개변수로 대입하면 됩니다.
+     //이 함수를 이용해서 원하는 형태로 정렬을 할 수 습니다.
+     //첫번째 매개변수 가 두번째 매개변수보다 클 때 양수
+     //같을 때 0 작을 떄는 음수를 리턴하면 오름차순 정렬이 됩니다.
+     
+     
+     console.log(ar1.sort(function(left, right))){
+    	  return left - right
+    	  
+      }))
+      
+      //ar2의 배열을 내림차순 정렬
+      //문자열은 크기 비교를 해서 정수를 리턴하는 방법을 이용
+      console.log(ar1.sort(function(left, right))){	
+      if(left < right){
+			return 1
+		}else{
+			return -1
+		}
+	}))
+
+     var GDP = function(name, money){
+    	 this.name = name
+    	 this.money = money
+     }
+     
+     var nations = [
+    	 new GDP("Korea",3000), 
+    	 new GDP("China", 15000),
+    	 new GDP("Holland", 15000),
+    	 new GDP("Swiss", 15000),
+    	 new GDP("Austria", 15000)]
+    	 
+     //기본 자형이 아니고 객체인 경우는 어떤 값을 가지고 비교할 것인지 sort 메소드에  알려 주어야 합니다.
+     
+     console.log(nations.sort(
+    		 function(left, rigth){
+    			 return left.money - right.money
+    		 }
+        ))
+        
+        //nations 배열에서 money 값이 40000이 넘는 데이터만 추출
+        //함수의 매개변수로 2개 추가가 가능한 데 추가한 첫번째 매개변수는 
+        //데이터의 인덱스이고 두번째 매개변수는 배열
+        console.log(nations.filter(function(data){
+        	return data.money > 40000
+        }))
+     
+</script>
+
+
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>비디오 조작을 위한 자바 스크립트</title>
+
+<style>
+     /* 전체 영역에 대한 기본 설정 */ 
+       body{
+       text-align:center; 
+       }
+       /* html5의 semantic 태그를 지원하지 않는 브라우저에서 semantic 태그들을 블록태그로 만들기 위한 설정*/
+       header, section, footer, aside, nav, article, figure, figcation, hgroup{
+       displat:block;
+       }
+      
+      section{
+      /*너비*/
+      width:720px;
+      /*다른 콘텐츠와의 여백*/
+      margin:20px auto;
+      /* 콘텐츠와 border 사이의 여백 */
+      padding: 5px;
+      /*배경*/
+      background:#999999;
+      /*경계선*/
+      border: 1px solid #666666; /*테투리*/
+      
+      /*vendor prefix - 표준이 정해지지 않은 속성 설정
+      moz: firefox
+      webkit : safari, chrome
+      없는 것이 IE- ms라고 기재해도 됩니다. */ 
+      -moz-border-radius:5px;
+      -webkit-border-radius:5px;
+      border-radius:5px;
+      
+      }
+      
+      
+     nav{
+     /*상하좌우 4방향으로 설정하는 style은 하나만 설정하면 4방향 공통2개를 설정하면 상하 좌우 */
+     margin:5px 0px;
+     
+     }
+     
+     
+    /* buttons라는 id를 가진 영역에만 적용*/
+    #buttons{
+    
+    /*화면에 떠 있는 형태로 배치하기 위한 속성
+    블록 영역 옆에 다른 콘텐츠를 배치할 때 사용*/
+    float:left;
+    width:85px;
+    height:20px;    
+    }
+    
+    /* bar 라는 id를 가진 영역에만 적용 */
+    #bar{
+    /*배치를 할 때의 옵션 - absolute(절대위치), relativie(어울림), static */
+    position:relative;
+    float:left;
+    width:600px;
+    height:16px;
+    padding: 2px;
+    border: 1px solid #CCCCC;
+    background: #EEEEEE;
+    }
+    
+    #progress{
+    position:absolute;
+    width:0px;
+    height:16px;
+    background:rgba(0,0,150,0.2);
+    
+    }
+    
+</style>
+
+
+</head>
+<body>
+
+     <!-- section이 콘텐츠들을 모아서 출력하는 논리적인 영역을 만들기 -->
+     <section>
+     <video id="media" width="720" height="400">
+         <source src ="../resources/Painting.mp4" />
+         <source src ="../resources/IPhone3G.mov" />
+     </video>
+     <!-- 메뉴 영역 만들기 -->
+     <nav>
+     <!-- 재생과 중지 역할을 수행할 버튼 -->
+     <div id="buttons">
+     <button type="button" id="play">Play</button>
+     </div>
+     <!-- 진행율을 나타내기 위한 영역 -->
+     <div id="bar">
+     <div id="progress"></div>
+     </div>
+     <!-- float을 해제하기 위한 영역 -->
+     <div style="clear:both"></div>
+     </nav>
+     
+     </section>
+</body>
+    <!-- 페이지에 동적인 기능을 부여하기 위한 스크립트 코드 -->
+   <script>
+   
+   //시작하자 마자 수행할 코드
+   //scrip를 head에 작성한 경우에는
+   //window에 load 이벤트가 발생했을 떄 코드를 실행하도록 해야합니다.
+   window.addEventListener('load', function(){
+	   //필요한 객체를 전부 찾아오기
+	   //변수를 만들 때 var를 붙이면 지역변수 안붙이면 전역변수
+	   maxim = 600
+	   //body에 있는 Dom 객체 찾아오기 - Video 태그
+	   mmedia = document.getElementById("media")
+	   bar = document.getElementById("bar")
+	   progress = document.getElementById("progress")
+	   
+	   
+	   //bar를 클릭했을 때 클릭한 위치를 재생하도록 만들
+	   bar.addEventListener('click', function(e){
+		   //비디오가 재생중이면
+		   if(!mmedia.paused && !mmedia.ended){
+			   //마우스의 현재 위치 가져오기
+			   var mousex = e.pageX - bar.offsetLeft
+			   //마우스 위치를 가ㅏ지고 재생위치를 연산
+			   var newtime = mousex * mmedia.duration/maxim
+			   //비디오 재생 위치를 마우스 위치로 변경
+			   mmedia.currentTime = newtime
+			   //진행률 표시도 변경
+			   progress.style.width = mousex +'px'
+		   }
+	   })
+   
+       //play 버튼을 누를 떄 마다 텍스트가 변경되고 재생과 중지를 토글하도록 작성
+       play.addEventListener('click', function(e){
+    	   //종료되었거나 중지 중아니면 - 재생 중이면
+    	   if(!mmedia.paused && !mmedia.ended){
+    		   // 미디어 중지
+    		   mmedia.pause()
+    		   play.innerHTML = "Play"
+    		   //타이머 중지
+    		   clearInterval(loop)
+    		   
+    	   }else{
+    		   //미디어 재생
+    		   mmedia.play()
+    		   play.innerHTML = "Pause"
+    		   //1초마다 status라는 함수를 호출하는 타이머를 생성하고 loop에 대입
+    		   loop = setInterval(status, 1000)
+    	   }
+       })
+      
+   })
+//타이머가 수행할 함수 - 비디오 재생 중이면 현재재생 위치를 progress에 출력
+//비디오 재생이 종료가 되면 progress의 위치를 0으로
+function status(){
+	   if(!mmedia.ended){
+		   //전체 재생 시간에서 현재 재생시간을 나누어서 정수로 변환
+		   var size = parseInt(mmedia.currentTime * maxim / mmedia.duration)
+           //progress의 너비를 위에서 구한 값으로 설정
+           //스크립트에서 스타일 시트 설정: 값을 문자열로 설정
+		   progress.style.width = size + 'px'
+		}else{
+			progress.style.width = '0px';
+			play.innerHTML = 'Play'
+			//타이머 중지
+			clearInterval(loop)
+
+	   }
+	   
+   }
+   
+   
+   </script>
+
+</html>
